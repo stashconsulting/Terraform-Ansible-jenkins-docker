@@ -12,7 +12,7 @@ provider "google" {
 
 // compute engine
 resource "google_compute_instance" "default" {
-  name         = "test"
+  name         = "test2"
   machine_type = var.machine_type
   zone         = local.zone
 
@@ -29,4 +29,20 @@ resource "google_compute_instance" "default" {
       // Ephemeral IP
     }
   }
+  
+  # Adding ssh key to the instance
+   metadata = {
+    ssh-keys = "${var.gce_ssh_user}:${file(var.gce_ssh_pub_key_file)}"
+  }
+}
+
+# container registry
+resource "google_container_registry" "registry" {
+  project  = var.project
+}
+
+resource "google_storage_bucket_iam_member" "admin" {
+  bucket = google_container_registry.registry.id
+  role = "roles/storage.admin"
+  member = "serviceAccount:${var.service_account}"
 }
