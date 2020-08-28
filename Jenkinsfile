@@ -11,7 +11,7 @@ pipeline {
         }
         stage('tagging Jenkins image!') {
         steps {
-            sh 'docker tag stashconsulting/jenkins-multibranch-plugin:$BUILD_NUMBER stashconsulting/jenkins-multibranch-plugin:latest .'
+            sh 'docker tag stashconsulting/jenkins-multibranch-plugin:$BUILD_NUMBER stashconsulting/jenkins-multibranch-plugin:latest'
         }
         }
         stage('pushing Jenkins image to the registry!') {
