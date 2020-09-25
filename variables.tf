@@ -9,7 +9,7 @@ variable "machine_type"{
 
 variable "boot_disk_image"{
   type = string
-  default = "debian-cloud/debian-10"
+  default = "ubuntu-1804-bionic-v20200821a"
 }
 
 variable "gce_ssh_user"{
