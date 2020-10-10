@@ -8,3 +8,5 @@
       name: stashconsulting
       image: stashconsulting/jenkins-multibranch-plugin:2
       detach: yes
+      ports:
+      - "9000:8080"
