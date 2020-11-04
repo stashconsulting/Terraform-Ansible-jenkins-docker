@@ -1,0 +1,12 @@
+---
+- name: Install Jenkins Docker image
+  hosts: remote
+
+  tasks:
+  - name: Re-create a jenkins image
+    docker_container:
+      name: stashconsulting
+      image: stashconsulting/jenkins-multibranch-plugin:2
+      detach: yes
+      ports:
+      - "9000:8080"
